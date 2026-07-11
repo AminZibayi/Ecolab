@@ -79,122 +79,8 @@ export default function Applet4_EquilibriumElasticity() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Controls Panel */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Scales className="text-blue-500" size={20} />
-          تنظیمات بازار و مالیات
-        </h3>
-
-        {/* Sliders */}
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.demandShift} (ترجیحات مصرف‌کننده)</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{demandIntercept}</span>
-            </div>
-            <input
-              type="range"
-              min={15}
-              max={30}
-              step={1}
-              value={demandIntercept}
-              onChange={(e) => setDemandIntercept(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-            />
-          </div>
-
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.supplyShift} (هزینه‌های تولید)</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{supplyIntercept}</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={10}
-              step={1}
-              value={supplyIntercept}
-              onChange={(e) => setSupplyIntercept(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
-            />
-          </div>
-
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.taxWedge}</span>
-              <span className="font-mono font-bold text-red-600 dark:text-red-400">{tax}</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={8}
-              step={0.5}
-              value={tax}
-              onChange={(e) => setTax(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
-            />
-          </div>
-        </div>
-
-        {/* Elasticity Calculator Panel */}
-        <div className="border-t border-zinc-150 dark:border-zinc-800 pt-4 space-y-4">
-          <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-xs flex items-center gap-1.5">
-            <Calculator className="text-amber-500" size={16} />
-            {t.calcElasticity}
-          </h4>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="flex justify-between text-[10px] mb-1">
-                <span className="text-zinc-500">{t.point1} Q1</span>
-                <span className="font-mono font-bold text-zinc-800 dark:text-zinc-200">{q1}</span>
-              </div>
-              <input
-                type="range"
-                min={1}
-                max={14}
-                step={1}
-                value={q1}
-                onChange={(e) => setQ1(Number(e.target.value))}
-                className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
-              />
-            </div>
-
-            <div>
-              <div className="flex justify-between text-[10px] mb-1">
-                <span className="text-zinc-500">{t.point2} Q2</span>
-                <span className="font-mono font-bold text-zinc-800 dark:text-zinc-200">{q2}</span>
-              </div>
-              <input
-                type="range"
-                min={1}
-                max={14}
-                step={1}
-                value={q2}
-                onChange={(e) => setQ2(Number(e.target.value))}
-                className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
-              />
-            </div>
-          </div>
-
-          <div className="p-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-900 rounded-lg text-xs space-y-1">
-            <div className="flex justify-between">
-              <span className="text-zinc-500">{t.elasticityValue}</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">
-                {elasticity.toFixed(2)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-500">طبقه‌بندی کشش:</span>
-              <span className="text-amber-600 dark:text-amber-400 font-bold">{elasticityLabel}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Chart Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Chart Panel (Left Column) - Wide */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <Info className="text-emerald-500" size={20} />
           تعادل عرضه و تقاضا و اثر مالیات
@@ -357,9 +243,123 @@ export default function Applet4_EquilibriumElasticity() {
         </div>
       </div>
 
-      {/* Welfare Results / Math Panel */}
-      <div className="lg:col-span-3 space-y-4">
-        {/* Welfare Metrics */}
+      {/* Right Column Stack (Controls & Results) */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Controls Panel */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Scales className="text-blue-500" size={20} />
+            تنظیمات بازار و مالیات
+          </h3>
+
+          {/* Sliders */}
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.demandShift} (ترجیحات مصرف‌کننده)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{demandIntercept}</span>
+              </div>
+              <input
+                type="range"
+                min={15}
+                max={30}
+                step={1}
+                value={demandIntercept}
+                onChange={(e) => setDemandIntercept(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.supplyShift} (هزینه‌های تولید)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{supplyIntercept}</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={10}
+                step={1}
+                value={supplyIntercept}
+                onChange={(e) => setSupplyIntercept(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.taxWedge}</span>
+                <span className="font-mono font-bold text-red-600 dark:text-red-400">{tax}</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={8}
+                step={0.5}
+                value={tax}
+                onChange={(e) => setTax(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
+              />
+            </div>
+          </div>
+
+          {/* Elasticity Calculator Panel */}
+          <div className="border-t border-zinc-150 dark:border-zinc-800 pt-4 space-y-4">
+            <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm flex items-center gap-1.5">
+              <Calculator className="text-amber-500" size={16} />
+              {t.calcElasticity}
+            </h4>
+
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-zinc-500">{t.point1} Q1</span>
+                  <span className="font-mono font-bold text-zinc-800 dark:text-zinc-200">{q1}</span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={14}
+                  step={1}
+                  value={q1}
+                  onChange={(e) => setQ1(Number(e.target.value))}
+                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-zinc-500">{t.point2} Q2</span>
+                  <span className="font-mono font-bold text-zinc-800 dark:text-zinc-200">{q2}</span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={14}
+                  step={1}
+                  value={q2}
+                  onChange={(e) => setQ2(Number(e.target.value))}
+                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                />
+              </div>
+            </div>
+
+            <div className="p-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-900 rounded-lg text-xs space-y-1">
+              <div className="flex justify-between">
+                <span className="text-zinc-500">{t.elasticityValue}</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">
+                  {elasticity.toFixed(2)}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">طبقه‌بندی کشش:</span>
+                <span className="text-amber-600 dark:text-amber-400 font-bold">{elasticityLabel}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Welfare Metrics Card */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-3">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm border-b border-zinc-100 dark:border-zinc-800 pb-2">
             تحلیل رفاهی تعادل بازار
@@ -398,7 +398,7 @@ export default function Applet4_EquilibriumElasticity() {
           </div>
         </div>
 
-        {/* Tax Incidence */}
+        {/* Tax Incidence Card */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-3">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-xs">
             {t.taxIncidence}
@@ -422,7 +422,7 @@ export default function Applet4_EquilibriumElasticity() {
           </div>
         </div>
 
-        {/* Insight */}
+        {/* Insight Box */}
         <div className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800/80 rounded-xl p-4 text-xs text-zinc-600 dark:text-zinc-400 space-y-2">
           <div className="flex items-center gap-1.5 font-bold text-zinc-800 dark:text-zinc-200">
             <Lightbulb className="text-amber-500" size={16} />

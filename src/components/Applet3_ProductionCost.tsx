@@ -71,131 +71,8 @@ export default function Applet3_ProductionCost() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Controls */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Factory className="text-blue-500" size={20} />
-          تنظیمات تکنولوژی و قیمت عوامل تولید
-        </h3>
-
-        <div className="space-y-4">
-          {/* Productivity */}
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.tech} (z)</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{z}</span>
-            </div>
-            <input
-              type="range"
-              min={1}
-              max={5}
-              step={0.5}
-              value={z}
-              onChange={(e) => setZ(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-            />
-          </div>
-
-          {/* Exponents alpha and beta */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.alpha} (α)</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{alpha.toFixed(2)}</span>
-              </div>
-              <input
-                type="range"
-                min={0.2}
-                max={0.8}
-                step={0.05}
-                value={alpha}
-                onChange={(e) => setAlpha(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.beta} (β)</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{beta.toFixed(2)}</span>
-              </div>
-              <input
-                type="range"
-                min={0.2}
-                max={0.8}
-                step={0.05}
-                value={beta}
-                onChange={(e) => setBeta(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-          </div>
-
-          {/* Factor Prices */}
-          <div className="grid grid-cols-2 gap-4 border-t border-zinc-100 dark:border-zinc-800 pt-4">
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.wage} (w)</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{wage}</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={15}
-                step={1}
-                value={wage}
-                onChange={(e) => setWage(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.rental} (r)</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{rental}</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={15}
-                step={1}
-                value={rental}
-                onChange={(e) => setRental(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-          </div>
-
-          {/* Fixed Capital */}
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4">
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.capital} در کوتاه‌مدت (K̄)</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{fixedK}</span>
-            </div>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              step={1}
-              value={fixedK}
-              onChange={(e) => setFixedK(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
-            />
-          </div>
-        </div>
-
-        {/* Info panel */}
-        <div className="p-4 bg-zinc-50 dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-900 rounded-xl space-y-2">
-          <div className="text-xs font-bold text-zinc-500">{t.returnsToScale}</div>
-          <div className="text-sm font-extrabold text-blue-600 dark:text-blue-400">{rtsText}</div>
-          <p className="text-[10px] text-zinc-500 leading-normal">
-            اگر مجموع کشش‌ها برابر ۱ باشد بازدهی ثابت، بزرگتر از ۱ بازدهی فزاینده و کوچکتر از ۱ بازدهی کاهنده به مقیاس نام دارد.
-          </p>
-        </div>
-      </div>
-
-      {/* Curves Graph Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Left Column: Curves Graph Panel (Wide) */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <ChartLine className="text-emerald-500" size={20} />
           {t.shortRunCost}
@@ -279,8 +156,125 @@ export default function Applet3_ProductionCost() {
         </div>
       </div>
 
-      {/* Intuition Panel */}
-      <div className="lg:col-span-3 space-y-4">
+      {/* Right Column Stack (Controls & Results) */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Controls Panel */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Factory className="text-blue-500" size={20} />
+            تنظیمات تکنولوژی و قیمت عوامل تولید
+          </h3>
+          <div className="space-y-4">
+            {/* Productivity */}
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.tech} (z)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{z}</span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={5}
+                step={0.5}
+                value={z}
+                onChange={(e) => setZ(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            {/* Exponents alpha and beta */}
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.alpha} (α)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{alpha.toFixed(2)}</span>
+              </div>
+              <input
+                type="range"
+                min={0.2}
+                max={0.8}
+                step={0.05}
+                value={alpha}
+                onChange={(e) => setAlpha(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.beta} (β)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{beta.toFixed(2)}</span>
+              </div>
+              <input
+                type="range"
+                min={0.2}
+                max={0.8}
+                step={0.05}
+                value={beta}
+                onChange={(e) => setBeta(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.wage} (w)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{wage}</span>
+              </div>
+              <input
+                type="range"
+                min={2}
+                max={15}
+                step={1}
+                value={wage}
+                onChange={(e) => setWage(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.rental} (r)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{rental}</span>
+              </div>
+              <input
+                type="range"
+                min={2}
+                max={15}
+                step={1}
+                value={rental}
+                onChange={(e) => setRental(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            {/* Fixed Capital */}
+            <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4">
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.capital} در کوتاه‌مدت (K̄)</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{fixedK}</span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={10}
+                step={1}
+                value={fixedK}
+                onChange={(e) => setFixedK(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+              />
+            </div>
+          </div>
+
+          {/* Info panel */}
+          <div className="p-4 bg-zinc-50 dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-900 rounded-xl space-y-2">
+            <div className="text-xs font-bold text-zinc-500">{t.returnsToScale}</div>
+            <div className="text-sm font-extrabold text-blue-600 dark:text-blue-400">{rtsText}</div>
+            <p className="text-[10px] text-zinc-500 leading-normal">
+              اگر مجموع کشش‌ها برابر ۱ باشد بازدهی ثابت، بزرگتر از ۱ بازدهی فزاینده و کوچکتر از ۱ بازدهی کاهنده به مقیاس نام دارد.
+            </p>
+          </div>
+        </div>
+
         {/* Value metrics display */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-4">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm border-b border-zinc-100 dark:border-zinc-800 pb-2">
@@ -305,11 +299,11 @@ export default function Applet3_ProductionCost() {
                 </div>
                 <hr className="border-zinc-100 dark:border-zinc-800" />
                 <div className="flex justify-between font-medium">
-                  <span className="text-red-500">{t.legendAC}:</span>
+                  <span className="text-red-500">{t.legendAC}</span>
                   <span className="font-mono text-red-600 dark:text-red-400 font-bold">{costs.AC.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-medium">
-                  <span className="text-blue-500">{t.legendMC}:</span>
+                  <span className="text-blue-500">{t.legendMC}</span>
                   <span className="font-mono text-blue-600 dark:text-blue-400 font-bold">{costs.MC.toFixed(2)}</span>
                 </div>
               </div>

@@ -154,8 +154,8 @@ export default function Applet5_GameTheory() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Matrix Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Matrix Panel (Left Column) - Wide */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <Shield className="text-blue-500" size={20} />
           ماتریس بازدهی ۲در۲ بازی
@@ -168,7 +168,7 @@ export default function Applet5_GameTheory() {
             className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
               preset === "PRISONER"
                 ? "bg-zinc-100 dark:bg-zinc-800 border-zinc-400 dark:border-zinc-600 font-bold"
-                : "border-zinc-250 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
+                : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
             }`}
           >
             {t.prisonersDilemma}
@@ -178,7 +178,7 @@ export default function Applet5_GameTheory() {
             className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
               preset === "BATTLE"
                 ? "bg-zinc-100 dark:bg-zinc-800 border-zinc-400 dark:border-zinc-600 font-bold"
-                : "border-zinc-250 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
+                : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
             }`}
           >
             {t.battleOfSexes}
@@ -188,7 +188,7 @@ export default function Applet5_GameTheory() {
             className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
               preset === "HAWK_DOVE"
                 ? "bg-zinc-100 dark:bg-zinc-800 border-zinc-400 dark:border-zinc-600 font-bold"
-                : "border-zinc-250 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
+                : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
             }`}
           >
             {t.hawkDove}
@@ -198,7 +198,7 @@ export default function Applet5_GameTheory() {
             className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
               preset === "MATCHING"
                 ? "bg-zinc-100 dark:bg-zinc-800 border-zinc-400 dark:border-zinc-600 font-bold"
-                : "border-zinc-250 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
+                : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
             }`}
           >
             {t.matchingPennies}
@@ -222,8 +222,8 @@ export default function Applet5_GameTheory() {
                   {matrix[0].p1}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(0, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(0, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(0, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(0, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
               <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800"></div>
@@ -232,8 +232,8 @@ export default function Applet5_GameTheory() {
                   {matrix[0].p2}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(0, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(0, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(0, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(0, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
             </div>
@@ -246,8 +246,8 @@ export default function Applet5_GameTheory() {
                   {matrix[1].p1}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(1, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(1, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(1, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(1, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
               <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800"></div>
@@ -256,8 +256,8 @@ export default function Applet5_GameTheory() {
                   {matrix[1].p2}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(1, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(1, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(1, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(1, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
             </div>
@@ -273,8 +273,8 @@ export default function Applet5_GameTheory() {
                   {matrix[2].p1}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(2, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(2, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(2, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(2, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
               <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800"></div>
@@ -283,8 +283,8 @@ export default function Applet5_GameTheory() {
                   {matrix[2].p2}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(2, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(2, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(2, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(2, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
             </div>
@@ -297,8 +297,8 @@ export default function Applet5_GameTheory() {
                   {matrix[3].p1}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(3, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(3, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(3, "p1", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(3, "p1", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
               <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800"></div>
@@ -307,8 +307,8 @@ export default function Applet5_GameTheory() {
                   {matrix[3].p2}
                 </span>
                 <div className="flex gap-1 mt-1">
-                  <button onClick={() => updatePayoff(3, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">+</button>
-                  <button onClick={() => updatePayoff(3, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-100 dark:bg-zinc-800 rounded">-</button>
+                  <button onClick={() => updatePayoff(3, "p2", 1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">+</button>
+                  <button onClick={() => updatePayoff(3, "p2", -1)} className="text-[10px] w-4 h-4 bg-zinc-105 dark:bg-zinc-800 rounded">-</button>
                 </div>
               </div>
             </div>
@@ -320,100 +320,100 @@ export default function Applet5_GameTheory() {
         </div>
       </div>
 
-      {/* Analytical Panel */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Users className="text-emerald-500" size={20} />
-          حل تعادل نش
-        </h3>
+      {/* Right Column Stack (Solver & History) */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Analytical Panel */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Users className="text-emerald-500" size={20} />
+            حل تعادل نش
+          </h3>
 
-        <div className="space-y-4 text-xs">
-          {/* Pure NE */}
-          <div className="p-4 bg-blue-50/50 dark:bg-blue-950/10 border border-blue-100 dark:border-blue-900/30 rounded-xl">
-            <span className="font-bold text-blue-700 dark:text-blue-400 block mb-2">{t.nashPure}</span>
-            {pne.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
-                {pne.map((eq, i) => (
-                  <span key={i} className="bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 font-bold px-2 py-1 rounded">
-                    {eq}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <span className="text-zinc-500 font-medium">هیچ تعادل نش خالصی وجود ندارد.</span>
-            )}
+          <div className="space-y-4 text-xs">
+            {/* Pure NE */}
+            <div className="p-4 bg-blue-50/50 dark:bg-blue-950/10 border border-blue-100 dark:border-blue-900/30 rounded-xl">
+              <span className="font-bold text-blue-700 dark:text-blue-400 block mb-2">{t.nashPure}</span>
+              {pne.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {pne.map((eq, i) => (
+                    <span key={i} className="bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 font-bold px-2 py-1 rounded">
+                      {eq}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <span className="text-zinc-500 font-medium">هیچ تعادل نش خالصی وجود ندارد.</span>
+              )}
+            </div>
+
+            {/* Mixed NE */}
+            <div className="p-4 bg-emerald-50/50 dark:bg-emerald-950/10 border border-emerald-100 dark:border-emerald-900/30 rounded-xl">
+              <span className="font-bold text-emerald-700 dark:text-emerald-400 block mb-2">{t.nashMixed}</span>
+              {hasMixed ? (
+                <div className="space-y-2 leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  <div>
+                    بازیکن ۱ (ردیف): بازی با استراتژی{" "}
+                    <strong className="text-blue-600 font-mono">بالا</strong> با احتمال{" "}
+                    <strong className="font-mono text-sm">{(pMix * 100).toFixed(0)}٪</strong>
+                  </div>
+                  <div>
+                    بازیکن ۲ (ستون): بازی با استراتژی{" "}
+                    <strong className="text-emerald-600 font-mono">چپ</strong> با احتمال{" "}
+                    <strong className="font-mono text-sm">{(qMix * 100).toFixed(0)}٪</strong>
+                  </div>
+                </div>
+              ) : (
+                <span className="text-zinc-500 font-medium">تعادل نش مختلط در استراتژی‌های محض نیست (یا وجود ندارد).</span>
+              )}
+            </div>
           </div>
 
-          {/* Mixed NE */}
-          <div className="p-4 bg-emerald-50/50 dark:bg-emerald-950/10 border border-emerald-100 dark:border-emerald-900/30 rounded-xl">
-            <span className="font-bold text-emerald-700 dark:text-emerald-400 block mb-2">{t.nashMixed}</span>
-            {hasMixed ? (
-              <div className="space-y-2 leading-relaxed text-zinc-700 dark:text-zinc-300">
-                <div>
-                  بازیکن ۱ (ردیف): بازی با استراتژی{" "}
-                  <strong className="text-blue-600 font-mono">بالا</strong> با احتمال{" "}
-                  <strong className="font-mono text-sm">{(pMix * 100).toFixed(0)}٪</strong>
-                </div>
-                <div>
-                  بازیکن ۲ (ستون): بازی با استراتژی{" "}
-                  <strong className="text-emerald-600 font-mono">چپ</strong> با احتمال{" "}
-                  <strong className="font-mono text-sm">{(qMix * 100).toFixed(0)}٪</strong>
-                </div>
+          {/* repeated game player */}
+          <div className="border-t border-zinc-150 dark:border-zinc-800 pt-4 space-y-4">
+            <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">
+              {t.interactivePlay}
+            </h4>
+
+            <div className="flex gap-2">
+              <button
+                onClick={() => playRound("U")}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-lg transition-all"
+              >
+                انتخاب {t.up} (همکاری)
+              </button>
+              <button
+                onClick={() => playRound("D")}
+                className="flex-1 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2 rounded-lg transition-all"
+              >
+                انتخاب {t.down} (خیانت)
+              </button>
+            </div>
+
+            {/* Scores */}
+            <div className="grid grid-cols-2 gap-4 text-center text-xs">
+              <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg">
+                <span className="text-zinc-500 block mb-1">{t.humanScore}</span>
+                <strong className="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{humanScore}</strong>
               </div>
-            ) : (
-              <span className="text-zinc-500 font-medium">تعادل نش مختلط در استراتژی‌های محض نیست (یا وجود ندارد).</span>
+              <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg">
+                <span className="text-zinc-500 block mb-1">{t.aiScore}</span>
+                <strong className="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{aiScore}</strong>
+              </div>
+            </div>
+
+            {/* Reset repeated game button */}
+            {humanHistory.length > 0 && (
+              <button
+                onClick={resetGame}
+                className="w-full flex items-center justify-center gap-1 text-[10px] text-zinc-500 hover:text-red-500 transition-all"
+              >
+                <Trash size={14} />
+                شروع مجدد شبیه‌ساز تعاملی
+              </button>
             )}
           </div>
         </div>
 
-        {/* repeated game player */}
-        <div className="border-t border-zinc-150 dark:border-zinc-800 pt-4 space-y-4">
-          <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">
-            {t.interactivePlay}
-          </h4>
-
-          <div className="flex gap-2">
-            <button
-              onClick={() => playRound("U")}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-lg transition-all"
-            >
-              انتخاب {t.up} (همکاری)
-            </button>
-            <button
-              onClick={() => playRound("D")}
-              className="flex-1 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2 rounded-lg transition-all"
-            >
-              انتخاب {t.down} (خیانت)
-            </button>
-          </div>
-
-          {/* Scores */}
-          <div className="grid grid-cols-2 gap-4 text-center text-xs">
-            <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg">
-              <span className="text-zinc-500 block mb-1">{t.humanScore}</span>
-              <strong className="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{humanScore}</strong>
-            </div>
-            <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg">
-              <span className="text-zinc-500 block mb-1">{t.aiScore}</span>
-              <strong className="text-base font-bold font-mono text-zinc-900 dark:text-zinc-100">{aiScore}</strong>
-            </div>
-          </div>
-
-          {/* Reset repeated game button */}
-          {humanHistory.length > 0 && (
-            <button
-              onClick={resetGame}
-              className="w-full flex items-center justify-center gap-1 text-[10px] text-zinc-500 hover:text-red-500 transition-all"
-            >
-              <Trash size={14} />
-              شروع مجدد شبیه‌ساز تعاملی
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* History and Intuition Panel */}
-      <div className="lg:col-span-3 space-y-4">
         {/* Play History */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-3">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm border-b border-zinc-100 dark:border-zinc-800 pb-2">

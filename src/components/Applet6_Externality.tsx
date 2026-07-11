@@ -77,88 +77,8 @@ export default function Applet6_Externality() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Controls Panel */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Scales className="text-blue-500" size={20} />
-          تنظیمات آثار خارجی و سیاست‌گذاری
-        </h3>
-
-        {/* Policy Selector */}
-        <div>
-          <label className="text-xs font-bold text-zinc-500 block mb-2">نوع سیاست حمایتی:</label>
-          <div className="grid grid-cols-1 gap-2">
-            {(["FREE_MARKET", "PIGOUVIAN_TAX", "CAP_AND_TRADE"] as PolicyType[]).map((pType) => (
-              <button
-                key={pType}
-                onClick={() => setPolicy(pType)}
-                className={`text-xs py-2.5 px-3 rounded-lg border font-bold transition-all text-right flex justify-between items-center ${
-                  policy === pType
-                    ? "bg-blue-50 dark:bg-blue-950/30 border-blue-500 text-blue-600 dark:text-blue-400"
-                    : "border-zinc-200 dark:border-zinc-850 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
-                }`}
-              >
-                <span>
-                  {pType === "FREE_MARKET" && t.freeMarket}
-                  {pType === "PIGOUVIAN_TAX" && t.pigouvianTax}
-                  {pType === "CAP_AND_TRADE" && t.capAndTrade}
-                </span>
-                <span className="text-[10px] opacity-75 font-normal">
-                  {pType === "FREE_MARKET" && "تولید تعادلی بازار"}
-                  {pType === "PIGOUVIAN_TAX" && "وضع مالیات برابر آسیب"}
-                  {pType === "CAP_AND_TRADE" && "سهمیه‌بندی و خرید مجوز"}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Sliders */}
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.externalitySize} (E)</span>
-              <span className="font-mono font-bold text-red-600 dark:text-red-400">{externality}</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={10}
-              step={1}
-              value={externality}
-              onChange={(e) => {
-                const val = Number(e.target.value);
-                setExternality(val);
-                // Sync default cap to social optimum initially
-                const autoCap = (A - C - val) / (B + D);
-                setCap(Math.round(autoCap * 10) / 10);
-              }}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
-            />
-          </div>
-
-          {policy === "CAP_AND_TRADE" && (
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">سقف مجاز انتشار آلودگی (Quota Cap):</span>
-                <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{cap}</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={10}
-                step={0.5}
-                value={cap}
-                onChange={(e) => setCap(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Main Market Graph Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Chart Panel (Left Column) - Wide */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <Info className="text-emerald-500" size={20} />
           نمودار عرضه، تقاضا و آلودگی بازار
@@ -274,8 +194,88 @@ export default function Applet6_Externality() {
         </div>
       </div>
 
-      {/* Policy Results / Analysis Panel */}
-      <div className="lg:col-span-3 space-y-4">
+      {/* Right Column Stack (Controls & Results) */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Controls Panel */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Scales className="text-blue-500" size={20} />
+            تنظیمات آثار خارجی و سیاست‌گذاری
+          </h3>
+
+          {/* Policy Selector */}
+          <div>
+            <label className="text-xs font-bold text-zinc-500 block mb-2">نوع سیاست حمایتی:</label>
+            <div className="grid grid-cols-1 gap-2">
+              {(["FREE_MARKET", "PIGOUVIAN_TAX", "CAP_AND_TRADE"] as PolicyType[]).map((pType) => (
+                <button
+                  key={pType}
+                  onClick={() => setPolicy(pType)}
+                  className={`text-xs py-2.5 px-3 rounded-lg border font-bold transition-all text-right flex justify-between items-center ${
+                    policy === pType
+                      ? "bg-blue-50 dark:bg-blue-950/30 border-blue-500 text-blue-600 dark:text-blue-400"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600"
+                  }`}
+                >
+                  <span>
+                    {pType === "FREE_MARKET" && t.freeMarket}
+                    {pType === "PIGOUVIAN_TAX" && t.pigouvianTax}
+                    {pType === "CAP_AND_TRADE" && t.capAndTrade}
+                  </span>
+                  <span className="text-[10px] opacity-75 font-normal">
+                    {pType === "FREE_MARKET" && "تولید تعادلی بازار"}
+                    {pType === "PIGOUVIAN_TAX" && "وضع مالیات برابر آسیب"}
+                    {pType === "CAP_AND_TRADE" && "سهمیه‌بندی و خرید مجوز"}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Sliders */}
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.externalitySize} (E)</span>
+                <span className="font-mono font-bold text-red-600 dark:text-red-400">{externality}</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={10}
+                step={1}
+                value={externality}
+                onChange={(e) => {
+                  const val = Number(e.target.value);
+                  setExternality(val);
+                  // Sync default cap to social optimum initially
+                  const autoCap = (A - C - val) / (B + D);
+                  setCap(Math.round(autoCap * 10) / 10);
+                }}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
+              />
+            </div>
+
+            {policy === "CAP_AND_TRADE" && (
+              <div>
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-zinc-600 dark:text-zinc-400">سقف مجاز انتشار آلودگی (Quota Cap):</span>
+                  <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{cap}</span>
+                </div>
+                <input
+                  type="range"
+                  min={2}
+                  max={10}
+                  step={0.5}
+                  value={cap}
+                  onChange={(e) => setCap(Number(e.target.value))}
+                  className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Policy status report */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-3">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm border-b border-zinc-100 dark:border-zinc-800 pb-2">

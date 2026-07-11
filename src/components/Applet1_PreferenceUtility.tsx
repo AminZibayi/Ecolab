@@ -341,7 +341,7 @@ export default function Applet1_PreferenceUtility() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Visual Chart Panel */}
-      <div className="lg:col-span-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <Info className="text-blue-500" size={20} />
           نمودار فضای کالاها و سبدهای مصرفی
@@ -516,7 +516,7 @@ export default function Applet1_PreferenceUtility() {
       </div>
 
       {/* Relations Form & Feedback Panel */}
-      <div className="lg:col-span-6 space-y-6">
+      <div className="lg:col-span-5 space-y-6">
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
             <Lightbulb className="text-amber-500" size={20} />
@@ -530,69 +530,75 @@ export default function Applet1_PreferenceUtility() {
           {/* Relation Selectors */}
           <div className="space-y-4">
             {/* Pair AB */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900">
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <span className="w-3 h-3 rounded-full bg-blue-500"></span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد A</strong>
-              </span>
+            <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900 space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold text-zinc-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                  <span>سبد A</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span>سبد B</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                </span>
+              </div>
               <select
                 value={rAB}
                 onChange={(e) => setRAB(e.target.value as Relation)}
-                className="w-full sm:w-auto text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center"
+                className="w-full text-xs md:text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center font-bold"
               >
                 <option value="UNCHECKED">مقایسه نشده</option>
                 <option value="GT">ترجیح دارد بر B (A ≻ B)</option>
                 <option value="LT">ترجیح دارد بر A (B ≻ A)</option>
                 <option value="EQ">بی‌تفاوت با B (A ∼ B)</option>
               </select>
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد B</strong>
-                <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-              </span>
             </div>
 
             {/* Pair BC */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900">
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد B</strong>
-              </span>
+            <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900 space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold text-zinc-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <span>سبد B</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span>سبد C</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                </span>
+              </div>
               <select
                 value={rBC}
                 onChange={(e) => setRBC(e.target.value as Relation)}
-                className="w-full sm:w-auto text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center"
+                className="w-full text-xs md:text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center font-bold"
               >
                 <option value="UNCHECKED">مقایسه نشده</option>
                 <option value="GT">ترجیح دارد بر C (B ≻ C)</option>
                 <option value="LT">ترجیح دارد بر B (C ≻ B)</option>
                 <option value="EQ">بی‌تفاوت با C (B ∼ C)</option>
               </select>
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد C</strong>
-                <span className="w-3 h-3 rounded-full bg-amber-500"></span>
-              </span>
             </div>
 
             {/* Pair CA */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900">
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <span className="w-3 h-3 rounded-full bg-amber-500"></span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد C</strong>
-              </span>
+            <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900 space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold text-zinc-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span>سبد C</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span>سبد A</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                </span>
+              </div>
               <select
                 value={rCA}
                 onChange={(e) => setRCA(e.target.value as Relation)}
-                className="w-full sm:w-auto text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center"
+                className="w-full text-xs md:text-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 text-center font-bold"
               >
                 <option value="UNCHECKED">مقایسه نشده</option>
                 <option value="GT">ترجیح دارد بر A (C ≻ A)</option>
                 <option value="LT">ترجیح دارد بر C (A ≻ C)</option>
                 <option value="EQ">بی‌تفاوت با A (C ∼ A)</option>
               </select>
-              <span className="flex items-center gap-2 whitespace-nowrap">
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">سبد A</strong>
-                <span className="w-3 h-3 rounded-full bg-blue-500"></span>
-              </span>
             </div>
           </div>
         </div>

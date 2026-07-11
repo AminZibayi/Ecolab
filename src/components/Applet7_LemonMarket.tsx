@@ -45,109 +45,8 @@ export default function Applet7_LemonMarket() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Controls Panel */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Info className="text-blue-500" size={20} />
-          پارامترهای بازار خودرو دست‌دوم
-        </h3>
-
-        {/* Sliders */}
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.pctLemons}</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{(pLemons * 100).toFixed(0)}٪</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.05}
-              value={pLemons}
-              onChange={(e) => setPLemons(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-            />
-          </div>
-
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4 space-y-4">
-            <h4 className="text-xs font-bold text-zinc-500">ارزش‌گذاری خریداران (ارزش نهایی):</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="flex justify-between text-[10px] mb-1">
-                  <span className="text-zinc-500">خوب (هلو)</span>
-                  <span className="font-mono font-bold text-zinc-850 dark:text-zinc-150">{vbg}</span>
-                </div>
-                <input
-                  type="range"
-                  min={vsg} // Buyer value must be at least seller value to make trade rational
-                  max={150}
-                  step={5}
-                  value={vbg}
-                  onChange={(e) => setVbg(Math.max(vsg, Number(e.target.value)))}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                />
-              </div>
-
-              <div>
-                <div className="flex justify-between text-[10px] mb-1">
-                  <span className="text-zinc-500">بد (لیمو)</span>
-                  <span className="font-mono font-bold text-zinc-850 dark:text-zinc-150">{vbb}</span>
-                </div>
-                <input
-                  type="range"
-                  min={vsb}
-                  max={80}
-                  step={5}
-                  value={vbb}
-                  onChange={(e) => setVbb(Math.max(vsb, Number(e.target.value)))}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4 space-y-4">
-            <h4 className="text-xs font-bold text-zinc-500">حداقل قیمت فروشندگان (قیمت رزرو):</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="flex justify-between text-[10px] mb-1">
-                  <span className="text-zinc-500">خوب (هلو)</span>
-                  <span className="font-mono font-bold text-zinc-850 dark:text-zinc-150">{vsg}</span>
-                </div>
-                <input
-                  type="range"
-                  min={60}
-                  max={vbg}
-                  step={5}
-                  value={vsg}
-                  onChange={(e) => setVsg(Math.min(vbg, Number(e.target.value)))}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
-                />
-              </div>
-
-              <div>
-                <div className="flex justify-between text-[10px] mb-1">
-                  <span className="text-zinc-500">بد (لیمو)</span>
-                  <span className="font-mono font-bold text-zinc-850 dark:text-zinc-150">{vsb}</span>
-                </div>
-                <input
-                  type="range"
-                  min={10}
-                  max={vbb}
-                  step={5}
-                  value={vsb}
-                  onChange={(e) => setVsb(Math.min(vbb, Number(e.target.value)))}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Visual Chart Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Visual Chart Panel (Left Column) - Wide */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <Info className="text-emerald-500" size={20} />
           شبیه‌سازی قیمت انتظاری و فروپاشی بازار
@@ -164,7 +63,7 @@ export default function Applet7_LemonMarket() {
                   x2={toSvgX(val)}
                   y2={padding}
                   stroke="#f4f4f5"
-                  className="dark:stroke-zinc-850"
+                  className="dark:stroke-zinc-800"
                   strokeWidth={1}
                 />
                 <text
@@ -268,8 +167,108 @@ export default function Applet7_LemonMarket() {
         </div>
       </div>
 
-      {/* Results / Asymmetric Info Analysis Panel */}
-      <div className="lg:col-span-3 space-y-4">
+      {/* Right Column Stack (Controls & Results) */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Controls Panel */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Info className="text-blue-500" size={20} />
+            پارامترهای بازار خودرو دست‌دوم
+          </h3>
+
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.pctLemons}</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{(pLemons * 100).toFixed(0)}٪</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.05}
+                value={pLemons}
+                onChange={(e) => setPLemons(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4 space-y-4">
+              <h4 className="text-xs font-bold text-zinc-500">ارزش‌گذاری خریداران (ارزش نهایی):</h4>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-zinc-500">خوب (هلو)</span>
+                    <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{vbg}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={vsg}
+                    max={150}
+                    step={5}
+                    value={vbg}
+                    onChange={(e) => setVbg(Math.max(vsg, Number(e.target.value)))}
+                    className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-zinc-500">بد (لیمو)</span>
+                    <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{vbb}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={vsb}
+                    max={80}
+                    step={5}
+                    value={vbb}
+                    onChange={(e) => setVbb(Math.max(vsb, Number(e.target.value)))}
+                    className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4 space-y-4">
+              <h4 className="text-xs font-bold text-zinc-500">حداقل قیمت فروشندگان (قیمت رزرو):</h4>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-zinc-500">خوب (هلو)</span>
+                    <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{vsg}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={60}
+                    max={vbg}
+                    step={5}
+                    value={vsg}
+                    onChange={(e) => setVsg(Math.min(vbg, Number(e.target.value)))}
+                    className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-zinc-500">بد (لیمو)</span>
+                    <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{vsb}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={10}
+                    max={vbb}
+                    step={5}
+                    value={vsb}
+                    onChange={(e) => setVsb(Math.min(vbb, Number(e.target.value)))}
+                    className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Market Status Card */}
         <div className={`border rounded-xl p-5 shadow-sm space-y-4 ${statusColor}`}>
           <div className="flex items-center gap-2">
@@ -302,7 +301,7 @@ export default function Applet7_LemonMarket() {
             </div>
             <div className="flex justify-between">
               <span className="text-zinc-500">حداقل قیمت درخواستی خودرو خوب:</span>
-              <span className="font-mono text-zinc-800 dark:text-zinc-250 font-bold">{vsg} واحد</span>
+              <span className="font-mono text-zinc-800 dark:text-zinc-200 font-bold">{vsg} واحد</span>
             </div>
             <hr className="border-zinc-100 dark:border-zinc-800" />
             <div className="flex justify-between font-bold text-[10px]">

@@ -139,129 +139,8 @@ export default function Applet2_ConsumerChoice() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Controls Panel */}
-      <div className="lg:col-span-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-          <Scales className="text-blue-500" size={20} />
-          تنظیمات بازار و مصرف‌کننده
-        </h3>
-
-        {/* Utility Type Selector */}
-        <div>
-          <label className="text-xs font-bold text-zinc-500 block mb-2">{t.utilityType}</label>
-          <div className="grid grid-cols-3 gap-2">
-            {(["COBB_DOUGLAS", "SUBSTITUTES", "COMPLEMENTS"] as UtilityType[]).map((type) => (
-              <button
-                key={type}
-                onClick={() => setUtilityType(type)}
-                className={`text-[10px] md:text-xs py-2 px-1 rounded-md border font-medium transition-all ${
-                  utilityType === type
-                    ? "bg-blue-50 dark:bg-blue-950/30 border-blue-500 text-blue-600 dark:text-blue-400 font-bold"
-                    : "border-zinc-200 dark:border-zinc-850 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
-                }`}
-              >
-                {type === "COBB_DOUGLAS" && t.cobbDouglas}
-                {type === "SUBSTITUTES" && t.perfectSubstitutes}
-                {type === "COMPLEMENTS" && t.perfectComplements}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Sliders */}
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.income}</span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{income}</span>
-            </div>
-            <input
-              type="range"
-              min={50}
-              max={200}
-              step={5}
-              value={income}
-              onChange={(e) => setIncome(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.priceX}</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{px}</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={15}
-                step={0.5}
-                value={px}
-                onChange={(e) => setPx(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-zinc-600 dark:text-zinc-400">{t.priceY}</span>
-                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{py}</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={15}
-                step={0.5}
-                value={py}
-                onChange={(e) => setPy(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">{t.taxX}</span>
-              <span className="font-mono font-bold text-red-600 dark:text-red-400">{taxX}</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={10}
-              step={0.5}
-              value={taxX}
-              onChange={(e) => setTaxX(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
-            />
-          </div>
-
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-600 dark:text-zinc-400">
-                {utilityType === "COBB_DOUGLAS"
-                  ? "سهم ترجیح کالای α) X)"
-                  : utilityType === "SUBSTITUTES"
-                  ? "نرخ نهایی جانشینی (MUx/MUy)"
-                  : "نسبت مصرف کالاها (Y/X)"}
-              </span>
-              <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{alpha.toFixed(1)}</span>
-            </div>
-            <input
-              type="range"
-              min={0.1}
-              max={0.9}
-              step={0.1}
-              value={alpha}
-              onChange={(e) => setAlpha(Number(e.target.value))}
-              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Chart Panel */}
-      <div className="lg:col-span-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
+      {/* Chart Panel (Left Column) - Wide & Prominent */}
+      <div className="lg:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <ChartBar className="text-emerald-500" size={20} />
           نقشه بودجه و ترجیحات مصرف‌کننده
@@ -406,8 +285,134 @@ export default function Applet2_ConsumerChoice() {
         </div>
       </div>
 
-      {/* Welfare / Policy Analysis Results */}
-      <div className="lg:col-span-3 space-y-4">
+      {/* Right Column Stack (Controls & Results) - Generous Spacing */}
+      <div className="lg:col-span-5 space-y-6">
+        {/* Controls Card */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-6">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <Scales className="text-blue-500" size={20} />
+            تنظیمات بازار و مصرف‌کننده
+          </h3>
+
+          {/* Utility Type Selector */}
+          <div>
+            <label className="text-xs font-bold text-zinc-500 block mb-2">{t.utilityType}</label>
+            <div className="flex flex-col gap-2">
+              {(["COBB_DOUGLAS", "SUBSTITUTES", "COMPLEMENTS"] as UtilityType[]).map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setUtilityType(type)}
+                  className={`w-full text-right flex justify-between items-center text-xs py-2.5 px-3 rounded-lg border font-bold transition-all ${
+                    utilityType === type
+                      ? "bg-blue-50 dark:bg-blue-950/30 border-blue-500 text-blue-600 dark:text-blue-400"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                  }`}
+                >
+                  <span>
+                    {type === "COBB_DOUGLAS" && t.cobbDouglas}
+                    {type === "SUBSTITUTES" && t.perfectSubstitutes}
+                    {type === "COMPLEMENTS" && t.perfectComplements}
+                  </span>
+                  <span className="text-[10px] opacity-75 font-normal">
+                    {type === "COBB_DOUGLAS" && "تابع مطلوبیت هموار"}
+                    {type === "SUBSTITUTES" && "خط‌های مطلوبیت مستقیم"}
+                    {type === "COMPLEMENTS" && "مطلوبیت‌های مکمل L شکل"}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Sliders */}
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.income}</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{income}</span>
+              </div>
+              <input
+                type="range"
+                min={50}
+                max={200}
+                step={5}
+                value={income}
+                onChange={(e) => setIncome(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.priceX}</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{px}</span>
+              </div>
+              <input
+                type="range"
+                min={2}
+                max={15}
+                step={0.5}
+                value={px}
+                onChange={(e) => setPx(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.priceY}</span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{py}</span>
+              </div>
+              <input
+                type="range"
+                min={2}
+                max={15}
+                step={0.5}
+                value={py}
+                onChange={(e) => setPy(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">{t.taxX}</span>
+                <span className="font-mono font-bold text-red-600 dark:text-red-400">{taxX}</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={10}
+                step={0.5}
+                value={taxX}
+                onChange={(e) => setTaxX(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
+              />
+            </div>
+
+            <div>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  {utilityType === "COBB_DOUGLAS"
+                    ? "سهم ترجیح کالای α) X)"
+                    : utilityType === "SUBSTITUTES"
+                    ? "نرخ نهایی جانشینی (MUx/MUy)"
+                    : "نسبت مصرف کالاها (Y/X)"}
+                </span>
+                <span className="font-mono font-bold text-zinc-950 dark:text-zinc-50">{alpha.toFixed(1)}</span>
+              </div>
+              <input
+                type="range"
+                min={0.1}
+                max={0.9}
+                step={0.1}
+                value={alpha}
+                onChange={(e) => setAlpha(Number(e.target.value))}
+                className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Results Card */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm space-y-4">
           <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm border-b border-zinc-100 dark:border-zinc-800 pb-2">
@@ -415,24 +420,24 @@ export default function Applet2_ConsumerChoice() {
           </h4>
 
           {/* Revenue */}
-          <div>
-            <span className="text-xs text-zinc-500 block mb-1">{t.govRevenue}</span>
-            <span className="font-mono text-lg font-extrabold text-zinc-900 dark:text-zinc-100">
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-zinc-500 font-bold">{t.govRevenue}</span>
+            <span className="font-mono text-base font-extrabold text-zinc-900 dark:text-zinc-100">
               {govRev.toFixed(1)} واحد
             </span>
           </div>
 
-          <hr className="border-zinc-100 dark:border-zinc-800" />
+          <hr className="border-zinc-150 dark:border-zinc-800" />
 
           {/* Policy A */}
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-rose-500"></span>
               <h5 className="text-xs font-bold text-rose-600 dark:text-rose-400">مالیات بر کالا X</h5>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-zinc-500">سبد مصرفی:</span>
-              <span className="font-mono text-zinc-800 dark:text-zinc-200 font-bold">
+              <span className="font-mono text-zinc-800 dark:text-zinc-200 font-bold whitespace-nowrap">
                 ({optTaxX.x.toFixed(1)}، {optTaxX.y.toFixed(1)})
               </span>
             </div>
@@ -442,17 +447,17 @@ export default function Applet2_ConsumerChoice() {
             </div>
           </div>
 
-          <hr className="border-zinc-100 dark:border-zinc-800" />
+          <hr className="border-zinc-150 dark:border-zinc-800" />
 
           {/* Policy B */}
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-blue-500"></span>
               <h5 className="text-xs font-bold text-blue-600 dark:text-blue-400">مالیات بر درآمد</h5>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-zinc-500">سبد مصرفی:</span>
-              <span className="font-mono text-zinc-800 dark:text-zinc-200 font-bold">
+              <span className="font-mono text-zinc-800 dark:text-zinc-200 font-bold whitespace-nowrap">
                 ({optTaxIncome.x.toFixed(1)}، {optTaxIncome.y.toFixed(1)})
               </span>
             </div>
@@ -462,15 +467,15 @@ export default function Applet2_ConsumerChoice() {
             </div>
           </div>
 
-          <hr className="border-zinc-100 dark:border-zinc-800" />
+          <hr className="border-zinc-150 dark:border-zinc-800" />
 
           {/* Deadweight Loss */}
-          <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30 p-3 rounded-lg">
-            <span className="text-xs text-amber-700 dark:text-amber-400 block mb-1">
-              تفاوت کارایی رفاهی (Deadweight Loss):
+          <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30 p-3 rounded-lg flex justify-between items-center text-xs">
+            <span className="text-amber-700 dark:text-amber-400 font-bold">
+              بار اضافی رفاهی (Deadweight Loss):
             </span>
-            <span className="font-mono text-sm font-bold text-amber-800 dark:text-amber-300">
-              {dwl > 0.01 ? `+${dwl.toFixed(2)} واحد مطلوبیت` : "بدون تفاوت (۰.۰)"}
+            <span className="font-mono text-xs font-black text-amber-800 dark:text-amber-300 whitespace-nowrap">
+              {dwl > 0.01 ? `+${dwl.toFixed(2)} واحد` : "بدون تفاوت (۰.۰)"}
             </span>
           </div>
         </div>
