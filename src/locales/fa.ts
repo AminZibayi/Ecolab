@@ -1,6 +1,6 @@
 export const locales = {
-  appName: "آزمایشگاه تعاملی اقتصاد خرد",
-  appSubtitle: "مجموعه ابزارهای تعاملی برای شهود مفاهیم اقتصادی",
+  appName: "اکولب (Ecolab)",
+  appSubtitle: "آزمایشگاه تعاملی اقتصاد خرد",
   theme: {
     light: "روز",
     dark: "شب",
@@ -156,5 +156,5 @@ export const locales = {
       missingMarket: "عدم مبادله (Missing Market) برای خودروهای باکیفیت.",
     },
   },
-  credits: "طراحی شده برای درس مبانی اقتصاد ۱ · دانشگاه صنعتی شریف",
+  credits: "طراحی شده برای درس مبانی اقتصاد ۱ · دانشگاه صنعتی امیرکبیر",
 };
