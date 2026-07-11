@@ -1,32 +1,87 @@
-# React + TypeScript + Vite
+# اکولب (Ecolab) - آزمایشگاه تعاملی اقتصاد خرد
+### درس مبانی اقتصاد ۱ · دانشگاه صنعتی امیرکبیر
+### Interactive Microeconomics Laboratory · Amirkabir University of Technology
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+<p align="center">
+  <img src="./src/assets/hero.png" width="120" alt="Ecolab Logo" />
+</p>
 
-Currently, two official plugins are available:
+**اکولب (Ecolab)** یک پلتفرم آموزشی تعاملی و مدرن برای شهود و یادگیری مفاهیم کلیدی درس اقتصاد خرد است. این پروژه با استفاده از شبیه‌سازهای برداری (SVG) پویا، به دانشجویان اجازه می‌دهد تا با جابجا کردن نمودارها، اسلایدرها و سبدهای مصرفی، تئوری‌های اقتصادی را به صورت تجربی و ملموس آزمایش کنند.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🎮 آزمایشگاه‌های موجود (The 7 Applets)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+این پروژه شامل **۷ آزمایشگاه تعاملی** مستقل است که مباحث کلیدی سرفصل اقتصاد خرد را پوشش می‌دهند:
 
-## Expanding the Oxlint configuration
+1. **آزمایشگاه ترجیحات و مطلوبیت (Preference & Utility Lab)**:
+   * تعامل با سبدهای مصرفی $A$ و $B$ و $C$ در صفحه کالاها به صورت کشیدن و رها کردن (Drag & Drop).
+   * موتور بررسی عقلانیت ترجیحات: کنترل اصول **کامل بودن** (Completeness)، **تراگذری** (Transitivity)، **یکنوایی** (Monotonicity) و **کوژ بودن** (Convexity).
+   * رسم خودکار منحنی‌های بی‌تفاوتی هموار در صورت برقراری عقلانیت و نمایش چرخه‌های تناقض در صورت نقض آن‌ها.
+   * حالت رفتاری (اقتصاد رفتاری بر اساس زیان‌گریزی کانمن و تیورسکی) در حضور نقطه مرجع.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+2. **انتخاب مصرف‌کننده و قید بودجه (Consumer Choice & Budget Lab)**:
+   * شبیه‌سازی قید بودجه و منحنی‌های بی‌تفاوتی برای سه نوع ترجیحات: **کاب-داگلاس**، **جانشین کامل** و **مکمل کامل**.
+   * مقایسه سیاست‌های مالیاتی: اثبات ریاضی و بصری برتری **مالیات بر درآمد** نسبت به **مالیات بر مقدار کالا** با درآمد یکسان برای دولت (حذف بار اضافی مالیات غیرمستقیم).
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+3. **تولید و منحنی‌های هزینه (Production & Cost Lab)**:
+   * تابع تولید کاب-داگلاس با قابلیت تنظیم کشش عوامل (کار $L$ و سرمایه $K$).
+   * محاسبه و نمایش پویای بازدهی نسبت به مقیاس (ثابت، فزاینده و کاهنده).
+   * استخراج و رسم نمودار منحنی‌های هزینه کوتاه‌مدت بنگاه شامل **هزینه متوسط (AC)**، **هزینه نهایی (MC)** و **هزینه متغیر متوسط (AVC)**.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+4. **تعادل بازار و کشش تقاضا (Equilibrium & Elasticity Lab)**:
+   * جابجایی پویای منحنی‌های عرضه و تقاضا و اعمال مالیات بر کالا.
+   * محاسبه کشش قیمتی تقاضا به **روش نقطه میانی (Midpoint Method)** بین دو نقطه دلخواه خریدار.
+   * محاسبه و نمایش مازاد مصرف‌کننده، مازاد تولیدکننده، درآمد دولت و **بار اضافی مالیات (Deadweight Loss)**.
+
+5. **نظریه بازی‌ها و تعادل نش (Game Theory & Nash Equilibrium Lab)**:
+   * ویرایشگر تعاملی ماتریس بازدهی بازی‌های ۲در۲ با قابلیت تعریف بازی‌های کلاسیک (معمای زندانی، جنگ جنسیت‌ها، شاهین-کبوتر، تطابق سکه‌ها).
+   * شناسایی و مشخص کردن پاسخ‌های بهینه (Best Responses) و حل تعادل‌های نش خالص و مختلط.
+   * شبیه‌سازی بازی تکرارشونده در برابر حریف با استراتژی تلافی‌جویانه (Tit-for-Tat).
+
+6. **آثار خارجی و ابزارهای تنظیم‌گری (Externality & Regulation Lab)**:
+   * شبیه‌سازی آثار خارجی منفی تولید (آلودگی محیط زیست) و نمایش تفاوت تعادل بازار آزاد با بهینه اجتماعی (هزینه نهایی اجتماعی MSC).
+   * مقایسه و اعمال ابزارهای نظارتی دولت: **مالیات پیگویی (Pigouvian Tax)** در مقایسه با **سقف آلایندگی و تجارت مجوزها (Cap & Trade)**.
+
+7. **اطلاعات نامتقارن و بازار لیمو (Lemon Market & Adverse Selection Lab)**:
+   * شبیه‌سازی بازار خودروهای دست دوم جرج آکرلوف تحت عدم تقارن اطلاعاتی.
+   * بررسی پدیده **کژگزینی (Adverse Selection)** و چگونگی خارج شدن کالاهای باکیفیت از بازار و فروپاشی کامل یا جزئی معاملات (Missing Market).
+
+---
+
+## 🛠️ ویژگی‌های فنی و طراحی (Technical & Design Features)
+
+* **Tailwind CSS v4 & Vazirmatn Font**: استفاده از آخرین نسخه فریم‌ورک استایل‌دهی تلویند و فونت استاندارد فارسی برای بهبود تجربه کاربری.
+* **Responsive Layout (RTL)**: طراحی کاملاً واکنش‌گرا و سازگار با سیستم‌های راست‌به‌چپ، مجهز به منوی ناوبری مخصوص موبایل و دسکتاپ.
+* **Precise Math Clipping**: تمامی خطوط نمودارها با کدهای ریاضی دقیق در مرزهای محورها برش داده شده‌اند تا از تداخل بصری و سرریز المان‌ها به بیرون کارت‌ها جلوگیری شود.
+* **Manual Dark/Light Toggle**: مجهز به کلید دستی تغییر تم شب/روز با استفاده از قابلیت `@custom-variant dark` در Tailwind v4.
+* **Bilingual English/Persian Locales**: تفکیک و انتقال تمامی رشته‌های متنی به فایل locale متمرکز جهت مدیریت آسان زبان و برندینگ پروژه.
+
+---
+
+## ⚙️ راهنمای اجرا و استفاده (How to Run)
+
+برای اجرای محلی پروژه، مراحل زیر را طی کنید:
+
+1. **نصب وابستگی‌ها**:
+   ```bash
+   pnpm install
+   ```
+
+2. **اجرای نسخه توسعه (Development)**:
+   ```bash
+   pnpm run dev
+   ```
+   *سپس آدرس `http://localhost:5173/Ecolab/` را در مرورگر باز کنید.*
+
+3. **کامپایل پروژه برای تولید (Production Build)**:
+   ```bash
+   pnpm run build
+   ```
+
+4. **انتشار روی GitHub Pages**:
+   پروژه مجهز به اکشن‌های گیت‌هاب جهت دپلوی خودکار در آدرس Pages شماست. کافیست تغییرات را روی شاخه `main` پوش کنید:
+   ```bash
+   git push origin main
+   ```
+   *صفحه شما در آدرس `https://<YOUR_USERNAME>.github.io/Ecolab/` منتشر خواهد شد.*
